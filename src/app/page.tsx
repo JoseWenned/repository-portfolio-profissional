@@ -22,8 +22,8 @@ export default function Home() {
         <Experiencia />
         <Certificacao />
         <Contato />
-        <Footer/>
       </main>
+    <Footer/>
     </>
   );
 }
