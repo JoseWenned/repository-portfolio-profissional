@@ -1,4 +1,5 @@
 import About from "@/components/About/About";
+import Formacao from "@/components/Formacao/Formacao";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import Projetos from "@/components/Projetos/Projetos";
@@ -13,6 +14,7 @@ export default function Home() {
         <About />
         <Skills />
         <Projetos />
+        <Formacao />
       </main>
     </>
   );
