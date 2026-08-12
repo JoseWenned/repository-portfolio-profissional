@@ -1,0 +1,87 @@
+.container {
+    width: 100%;
+    padding: 100px 24px;
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    margin-bottom: 48px;
+    font-size: 2.5rem;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.card {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.cardContent {
+    padding: 28px;
+}
+
+.projectTitle {
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+}
+
+.description {
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.technology {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #f3f4f6;
+    font-size: 0.85rem;
+
+    color: black;
+}
+
+.links {
+    display: flex;
+    gap: 16px;
+}
+
+.links a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 80px 20px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}
