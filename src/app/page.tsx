@@ -2,6 +2,7 @@ import About from "@/components/About/About";
 import Certificacao from "@/components/Certificacao/Certificacao";
 import Contato from "@/components/Contato/Contato";
 import Experiencia from "@/components/Experiencia/Experiencia";
+import Footer from "@/components/Footer/Footer";
 import Formacao from "@/components/Formacao/Formacao";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
@@ -21,6 +22,7 @@ export default function Home() {
         <Experiencia />
         <Certificacao />
         <Contato />
+        <Footer/>
       </main>
     </>
   );
