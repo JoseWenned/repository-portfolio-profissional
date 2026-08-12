@@ -1,0 +1,133 @@
+.certificacoes {
+  width: 100%;
+  padding: 100px 0;
+
+  &__container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  &__item {
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__image-link {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__info {
+    padding: 25px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    span {
+      white-space: nowrap;
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+  }
+
+  p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  &__link {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .certificacoes {
+    padding: 80px 0;
+
+    h2 {
+      margin-bottom: 35px;
+      font-size: 2rem;
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+    }
+
+    &__image {
+      height: 220px;
+    }
+
+    &__info {
+      padding: 20px;
+    }
+
+    &__header {
+      flex-direction: column;
+      gap: 10px;
+
+      span {
+        white-space: normal;
+      }
+    }
+  }
+}
