@@ -1,4 +1,5 @@
 import About from "@/components/About/About";
+import Experiencia from "@/components/Experiencia/Experiencia";
 import Formacao from "@/components/Formacao/Formacao";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
@@ -15,6 +16,7 @@ export default function Home() {
         <Skills />
         <Projetos />
         <Formacao />
+        <Experiencia />
       </main>
     </>
   );
