@@ -1,4 +1,4 @@
-import { formacao } from "@/data/formacao";
+import { formacoes } from "@/data/formacao";
 import styles from "./Formacao.module.css";
 
 export default function Formacao() {
@@ -8,22 +8,22 @@ export default function Formacao() {
                 <h2 className={styles.title}>Formação</h2>
 
                 <div className={styles.formacoes}>
-                    {formacao.map((item) => (
+                    {formacoes.map((item) => (
                         <article
                             className={styles.card}
-                            key={`${item.title}-${item.institution}`}
+                            key={`${item.titulo}-${item.instituicao}`}
                         >
                             <div className={styles.cardContent}>
                                 <h3 className={styles.course}>
-                                    {item.title}
+                                    {item.titulo}
                                 </h3>
 
                                 <p className={styles.institution}>
-                                    {item.institution}
+                                    {item.instituicao}
                                 </p>
 
                                 <p className={styles.period}>
-                                    {item.period}
+                                    {item.periodo}
                                 </p>
 
                                 {item.status && (

@@ -9,7 +9,7 @@ export interface Experiencia {
 export const experiencias: Experiencia[] = [
   {
     empresa: "Kipolpas",
-    cargo: "Experiência prática em desenvolvimento de software",
+    cargo: "Desenvolvedor de software",
     periodo: "Projeto prático",
     descricao:
       "Desenvolvimento de um sistema web voltado para apoiar processos relacionados à operação da empresa, aplicando conhecimentos de desenvolvimento backend e frontend.",

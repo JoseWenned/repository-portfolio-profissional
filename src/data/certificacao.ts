@@ -11,11 +11,11 @@ export interface Certificacao {
 
 export const certificacoes: Certificacao[] = [
   {
-    titulo: "Nome da certificação",
-    instituicao: "Instituição",
-    periodo: "2026",
+    titulo: "Desenvolvedor Web Full-Stack",
+    instituicao: "Kenzie Academy Brasil",
+    periodo: "Janeiro de 2023 – Janeiro de 2024",
     descricao:
-      "Descrição dos principais conhecimentos e competências desenvolvidos durante a formação.",
+      "Formação em desenvolvimento web Full-Stack realizada na Kenzie Academy Brasil.",
     imagem: imagemCertificadoFullStack,
   },
 ];
