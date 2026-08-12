@@ -101,17 +101,52 @@ npm run start
 
 Inicia a aplicação utilizando o build de produção.
 
-## Estrutura inicial
+## Funcionalidades
 
-```text
-src/
-└── app/
-    ├── layout.tsx
-    ├── page.tsx
-    ├── globals.css
-    └── page.module.css
+O portfólio possui atualmente as seguintes seções:
 
-public/
+- Apresentação profissional
+- Sobre
+- Habilidades técnicas
+- Formação
+- Projetos
+- Experiência
+- Certificações
+- Contato
+- Footer
+
+## Estrutura do projeto
+
+A estrutura principal do projeto segue uma organização baseada em componentes:
+
+```
+    src/
+    ├── app/
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   ├── globals.css
+    │   └── page.module.css
+    │
+    ├── components/
+    │   ├── Header/
+    │   ├── Hero/
+    │   ├── Sobre/
+    │   ├── Skills/
+    │   ├── Formacao/
+    │   ├── Projetos/
+    │   ├── Experiencia/
+    │   ├── Certificacao/
+    │   ├── Contato/
+    │   └── Footer/
+    │
+    └── data/
+        ├── formacao.ts
+        ├── projetos.ts
+        ├── experiencia.ts
+        └── certificacao.ts
+
+    public/
+    └── ...
 ```
 
 A estrutura será evoluída conforme novas funcionalidades e componentes forem adicionados ao projeto.
@@ -130,6 +165,25 @@ refactor: refatoração
 docs: documentação
 chore: configuração ou manutenção
 ```
+## Fluxo do projeto
+
+Desenvolvimento
+      ↓
+ESLint
+      ↓
+Build
+      ↓
+Commit
+      ↓
+Push
+      ↓
+Pull Request
+      ↓
+GitHub Actions
+      ↓
+Revisão
+      ↓
+Merge
 
 ## Status do projeto
 
