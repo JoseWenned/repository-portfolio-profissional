@@ -1,0 +1,21 @@
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  max-width: 800px;
+}
+
+.label {
+  margin: 0;
+}
+
+.content h2 {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.content p {
+  line-height: 1.7;
+}
