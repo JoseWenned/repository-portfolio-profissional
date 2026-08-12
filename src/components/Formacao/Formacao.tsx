@@ -2,40 +2,40 @@ import { formacoes } from "@/data/formacao";
 import styles from "./Formacao.module.css";
 
 export default function Formacao() {
-    return (
-        <section className={styles.container} id="formacao">
-            <div className={styles.content}>
-                <h2 className={styles.title}>Formação</h2>
+  return (
+    <section className={styles.formacao} id="formacao">
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <p className={styles.label}>Educação</p>
 
-                <div className={styles.formacoes}>
-                    {formacoes.map((item) => (
-                        <article
-                            className={styles.card}
-                            key={`${item.titulo}-${item.instituicao}`}
-                        >
-                            <div className={styles.cardContent}>
-                                <h3 className={styles.course}>
-                                    {item.titulo}
-                                </h3>
+          <h2 className={styles.title}>Formação</h2>
 
-                                <p className={styles.institution}>
-                                    {item.instituicao}
-                                </p>
+          <div className={styles.formacoes}>
+            {formacoes.map((item) => (
+              <article
+                className={styles.card}
+                key={`${item.titulo}-${item.instituicao}`}
+              >
+                <div className={styles.cardContent}>
+                  <h3 className={styles.course}>{item.titulo}</h3>
 
-                                <p className={styles.period}>
-                                    {item.periodo}
-                                </p>
+                  <p className={styles.institution}>
+                    {item.instituicao}
+                  </p>
 
-                                {item.status && (
-                                    <span className={styles.status}>
-                                        {item.status}
-                                    </span>
-                                )}
-                            </div>
-                        </article>
-                    ))}
+                  <p className={styles.period}>{item.periodo}</p>
+
+                  {item.status && (
+                    <span className={styles.status}>
+                      {item.status}
+                    </span>
+                  )}
                 </div>
-            </div>
-        </section>
-    );
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
