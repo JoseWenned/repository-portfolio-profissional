@@ -12,18 +12,20 @@ import Skills from "@/components/Skills/Skills";
 export default function Home() {  
   return (
     <>
-    <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projetos />
-        <Formacao />
-        <Experiencia />
-        <Certificacao />
-        <Contato />
-      </main>
-    <Footer/>
+      <Header />
+
+        <main id="conteudo">
+          <Hero />
+          <About />
+          <Skills />
+          <Projetos />
+          <Formacao />
+          <Experiencia />
+          <Certificacao />
+          <Contato />
+        </main>
+        
+      <Footer/>
     </>
   );
 }

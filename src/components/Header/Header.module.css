@@ -48,6 +48,84 @@
 
 .link:hover {
   color: var(--color-primary);
+} 
+
+.menuButton {
+  display: none;
+
+  width: 2.75rem;
+  height: 2.75rem;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  color: var(--color-text-primary);
+
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-md);
+
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.menuButton:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.menuButton span {
+  width: 1.35rem;
+  height: 2px;
+
+  border-radius: 999px;
+  background-color: currentColor;
+
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.menuLineOpen:nth-child(1) {
+  transform: translateY(0.4rem) rotate(45deg);
+}
+
+.menuLineOpen:nth-child(2) {
+  opacity: 0;
+}
+
+.menuLineOpen:nth-child(3) {
+  transform: translateY(-0.4rem) rotate(-45deg);
+}
+
+.mobileNavigation {
+  display: none;
+}
+
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: var(--spacing-md);
+
+  z-index: 100;
+
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  color: var(--color-primary-contrast);
+  background-color: var(--color-primary);
+
+  border-radius: var(--radius-sm);
+
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+
+  transition: top var(--transition-fast);
+}
+
+.skipLink:focus {
+  top: var(--spacing-sm);
 }
 
 @media (max-width: 900px) {
@@ -60,13 +138,61 @@
   }
 }
 
+
 @media (max-width: 768px) {
   .navigation {
-    min-height: auto;
-    padding: var(--spacing-md) 0;
+    min-height: 4.5rem;
   }
 
   .menu {
     display: none;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .mobileNavigation {
+    display: block;
+
+    padding: var(--spacing-md) 0 var(--spacing-lg);
+
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+
+    list-style: none;
+  }
+
+  .mobileLink {
+    display: block;
+
+    padding: var(--spacing-sm) var(--spacing-md);
+
+    color: var(--color-text-secondary);
+
+    border-radius: var(--radius-md);
+
+    font-size: var(--font-size-base);
+    font-weight: 500;
+
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast);
+  }
+
+  .mobileLink:hover {
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-md);
   }
 }
