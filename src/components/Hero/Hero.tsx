@@ -1,48 +1,153 @@
+"use client";
+
 import Image from "next/image";
+import { motion, type Variants } from "motion/react";
+
 import styles from "./Hero.module.css";
 
-//Imagens
+// Imagens
 import fotoPerfil from "../../assets/fotos/WhatsApp Image 2026-04-13 at 23.27.49.jpeg";
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Hero() {
   return (
     <section className={styles.hero} id="inicio">
-      <div className={styles.backgroundDecoration} aria-hidden="true">
+      <div
+        className={styles.backgroundDecoration}
+        aria-hidden="true"
+      >
         <span className={styles.grid} />
         <span className={styles.glow} />
       </div>
 
       <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.textContent}>
-            <p className={styles.greeting}>Olá, eu sou</p>
+        <motion.div
+          className={styles.content}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div
+            className={styles.textContent}
+            variants={containerVariants}
+          >
+            <motion.p
+              className={styles.greeting}
+              variants={itemVariants}
+            >
+              Olá, eu sou
+            </motion.p>
 
-            <h1 className={styles.title}>
+            <motion.h1
+              className={styles.title}
+              variants={itemVariants}
+            >
               José <span>Wenned</span>
-            </h1>
+            </motion.h1>
 
-            <h2 className={styles.subtitle}>
+            <motion.h2
+              className={styles.subtitle}
+              variants={itemVariants}
+            >
               Desenvolvedor de Software
-            </h2>
+            </motion.h2>
 
-            <p className={styles.description}>
+            <motion.p
+              className={styles.description}
+              variants={itemVariants}
+            >
               Desenvolvo aplicações web com foco em qualidade,
               organização e boas práticas de desenvolvimento.
-            </p>
+            </motion.p>
 
-            <div className={styles.actions}>
-              <a href="#projetos" className={styles.primaryAction}>
+            <motion.div
+              className={styles.actions}
+              variants={itemVariants}
+            >
+              <motion.a
+                href="#projetos"
+                className={styles.primaryAction}
+                whileHover={{
+                  y: -3,
+                  scale: 1.02,
+                }}
+                whileTap={{
+                  scale: 0.98,
+                }}
+              >
                 Ver projetos
-              </a>
+              </motion.a>
 
-              <a href="#contato" className={styles.secondaryAction}>
+              <motion.a
+                href="#contato"
+                className={styles.secondaryAction}
+                whileHover={{
+                  y: -3,
+                  scale: 1.02,
+                }}
+                whileTap={{
+                  scale: 0.98,
+                }}
+              >
                 Entre em contato
-              </a>
-            </div>
-          </div>
+              </motion.a>
+            </motion.div>
+          </motion.div>
 
-          <div className={styles.visual} aria-hidden="true">
-            <div className={styles.visualFrame}>
+          <motion.div
+            className={styles.visual}
+            aria-hidden="true"
+            initial={{
+              opacity: 0,
+              x: 40,
+              scale: 0.95,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              scale: 1,
+            }}
+            transition={{
+              duration: 0.9,
+              delay: 0.25,
+              ease: "easeOut",
+            }}
+          >
+            <motion.div
+              className={styles.visualFrame}
+              animate={{
+                rotate: [4, 5, 4],
+                y: [0, -6, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               <div className={styles.visualContent}>
                 <span className={styles.visualInitials}>
                   <Image
@@ -54,13 +159,50 @@ export default function Hero() {
                   />
                 </span>
               </div>
-            </div>
+            </motion.div>
 
-            <span className={styles.decorativeCircle} />
-            <span className={styles.decorativeSquare} />
-            <span className={styles.decorativeDiamond}>◇</span>
-          </div>
-        </div>
+            <motion.span
+              className={styles.decorativeCircle}
+              animate={{
+                y: [0, -12, 0],
+                rotate: [0, 8, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.span
+              className={styles.decorativeSquare}
+              animate={{
+                y: [0, 10, 0],
+                rotate: [45, 55, 45],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.span
+              className={styles.decorativeDiamond}
+              animate={{
+                y: [0, -10, 0],
+                rotate: [0, 180, 360],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              ◇
+            </motion.span>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
