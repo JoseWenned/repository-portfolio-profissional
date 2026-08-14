@@ -1,23 +1,67 @@
+"use client";
+
+import { motion, type Variants } from "motion/react";
 import { experiencias } from "@/data/experiencia";
 import styles from "./Experiencia.module.css";
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -30,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Experiencia() {
   return (
     <section className={styles.experiencia} id="experiencia">
       <div className={styles.container}>
         <div className={styles.content}>
-          <p className={styles.label}>Carreira</p>
+          <motion.div
+            className={styles.sectionHeader}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className={styles.label}>Carreira</p>
 
-          <h2 className={styles.title}>Experiência</h2>
+            <h2 className={styles.title}>Experiência</h2>
+          </motion.div>
 
-          <div className={styles.experiences}>
+          <motion.div
+            className={styles.experiences}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+          >
             {experiencias.map((experiencia) => (
-              <article
+              <motion.article
                 className={styles.experience}
                 key={`${experiencia.empresa}-${experiencia.cargo}`}
+                variants={itemVariants}
               >
+                <div className={styles.timelineMarker} />
+
                 <div className={styles.header}>
-                  <div>
+                  <div className={styles.heading}>
                     <h3 className={styles.role}>
                       {experiencia.cargo}
                     </h3>
@@ -41,9 +85,9 @@ export default function Experiencia() {
                     <li key={atividade}>{atividade}</li>
                   ))}
                 </ul>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

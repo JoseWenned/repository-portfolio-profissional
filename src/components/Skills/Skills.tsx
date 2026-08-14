@@ -1,39 +1,138 @@
+"use client";
+
+import { motion, type Variants } from "motion/react";
+
 import { skills } from "@/data/skills";
 import styles from "./Skills.module.css";
+
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: "easeOut",
+    },
+  },
+};
+
+const categoryVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.98,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const technologyVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.35,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Skills() {
   return (
     <section className={styles.skills} id="habilidades">
       <div className={styles.container}>
-        <div className={styles.content}>
-          <p className={styles.label}>Tecnologias</p>
+        <motion.div
+          className={styles.content}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+        >
+          <motion.p
+            className={styles.label}
+            variants={itemVariants}
+          >
+            Tecnologias
+          </motion.p>
 
-          <h2 className={styles.title}>Habilidades</h2>
+          <motion.h2
+            className={styles.title}
+            variants={itemVariants}
+          >
+            Habilidades
+          </motion.h2>
 
-          <div className={styles.categories}>
+          <motion.div
+            className={styles.categories}
+            variants={containerVariants}
+          >
             {skills.map((skill) => (
-              <article
+              <motion.article
                 className={styles.category}
                 key={skill.category}
+                variants={categoryVariants}
+                whileHover={{
+                  y: -6,
+                  transition: {
+                    duration: 0.2,
+                  },
+                }}
               >
-                <h3 className={styles.categoryTitle}>
+                <motion.h3
+                  className={styles.categoryTitle}
+                  variants={itemVariants}
+                >
                   {skill.category}
-                </h3>
+                </motion.h3>
 
-                <ul className={styles.technologies}>
+                <motion.ul
+                  className={styles.technologies}
+                  variants={containerVariants}
+                >
                   {skill.technologies.map((technology) => (
-                    <li
+                    <motion.li
                       className={styles.technology}
                       key={technology}
+                      variants={technologyVariants}
+                      whileHover={{
+                        y: -2,
+                        scale: 1.03,
+                      }}
                     >
                       {technology}
-                    </li>
+                    </motion.li>
                   ))}
-                </ul>
-              </article>
+                </motion.ul>
+              </motion.article>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

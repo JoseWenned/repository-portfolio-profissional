@@ -1,9 +1,62 @@
 "use client";
 
 import Image from "next/image";
+import { motion, type Variants } from "motion/react";
 import { useState } from "react";
+
 import { projetos } from "@/data/projetos";
+
 import styles from "./Projetos.module.css";
+
+const projectsContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.18,
+    },
+  },
+};
+
+const projectCard: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.98,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const headerContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const headerItem: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Projetos() {
   const [selectedImages, setSelectedImages] = useState<
@@ -14,37 +67,97 @@ export default function Projetos() {
     <section className={styles.projectsSection} id="projetos">
       <div className={styles.container}>
         <div className={styles.content}>
-          <p className={styles.label}>Portfólio</p>
+          <motion.div
+            className={styles.header}
+            variants={headerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 0.3,
+            }}
+          >
+            <motion.p
+              className={styles.label}
+              variants={headerItem}
+            >
+              Portfólio
+            </motion.p>
 
-          <h2 className={styles.title}>Projetos</h2>
+            <motion.h2
+              className={styles.title}
+              variants={headerItem}
+            >
+              Projetos
+            </motion.h2>
+          </motion.div>
 
-          <div className={styles.projects}>
+          <motion.div
+            className={styles.projects}
+            variants={projectsContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 0.1,
+            }}
+          >
             {projetos.map((project) => {
-              const selectedIndex = selectedImages[project.titulo] ?? 0;
-              const selectedImage = project.imagens[selectedIndex];
+              const selectedIndex =
+                selectedImages[project.titulo] ?? 0;
+
+              const selectedImage =
+                project.imagens[selectedIndex];
 
               return (
-                <article
+                <motion.article
                   className={styles.card}
                   key={project.titulo}
+                  variants={projectCard}
+                  whileHover={{
+                    y: -8,
+                    transition: {
+                      duration: 0.25,
+                    },
+                  }}
                 >
                   <div className={styles.gallery}>
-                    <div className={styles.mainImage}>
+                    <motion.div
+                      className={styles.mainImage}
+                      layout
+                    >
                       {selectedImage && (
-                        <Image
-                          src={selectedImage.src}
-                          alt={selectedImage.alt}
-                          fill
-                          priority={selectedIndex === 0}
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                        <motion.div
+                          key={selectedImage.src.src}
+                          className={styles.imageWrapper}
+                          initial={{
+                            opacity: 0,
+                            scale: 1.03,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            scale: 1,
+                          }}
+                          transition={{
+                            duration: 0.4,
+                            ease: "easeOut",
+                          }}
+                        >
+                          <Image
+                            src={selectedImage.src}
+                            alt={selectedImage.alt}
+                            fill
+                            priority={selectedIndex === 0}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </motion.div>
                       )}
-                    </div>
+                    </motion.div>
 
                     {project.imagens.length > 1 && (
                       <div className={styles.thumbnails}>
                         {project.imagens.map((image, index) => (
-                          <button
+                          <motion.button
                             type="button"
                             className={`${styles.thumbnail} ${
                               selectedIndex === index
@@ -61,7 +174,16 @@ export default function Projetos() {
                             aria-label={`Visualizar imagem ${
                               index + 1
                             } de ${project.imagens.length}`}
-                            aria-pressed={selectedIndex === index}
+                            aria-pressed={
+                              selectedIndex === index
+                            }
+                            whileHover={{
+                              y: -3,
+                              scale: 1.03,
+                            }}
+                            whileTap={{
+                              scale: 0.96,
+                            }}
                           >
                             <Image
                               src={image.src}
@@ -69,16 +191,24 @@ export default function Projetos() {
                               fill
                               sizes="80px"
                             />
-                          </button>
+                          </motion.button>
                         ))}
                       </div>
                     )}
                   </div>
 
                   <div className={styles.cardContent}>
-                    <h3 className={styles.projectTitle}>
+                    <motion.h3
+                      className={styles.projectTitle}
+                      whileHover={{
+                        x: 3,
+                      }}
+                      transition={{
+                        duration: 0.2,
+                      }}
+                    >
                       {project.titulo}
-                    </h3>
+                    </motion.h3>
 
                     <p className={styles.description}>
                       {project.descricao}
@@ -86,51 +216,77 @@ export default function Projetos() {
 
                     <div className={styles.technologies}>
                       {project.tecnologias.map((technology) => (
-                        <span
+                        <motion.span
                           className={styles.technology}
                           key={technology}
+                          whileHover={{
+                            y: -2,
+                            scale: 1.03,
+                          }}
+                          transition={{
+                            duration: 0.2,
+                          }}
                         >
                           {technology}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
 
                     <div className={styles.links}>
                       {project.githubFront && (
-                        <a
+                        <motion.a
                           href={project.githubFront}
                           target="_blank"
                           rel="noopener noreferrer"
+                          whileHover={{
+                            y: -2,
+                          }}
+                          whileTap={{
+                            scale: 0.97,
+                          }}
                         >
                           GitHub - Frontend
-                        </a>
+                        </motion.a>
                       )}
 
                       {project.githubBack && (
-                        <a
+                        <motion.a
                           href={project.githubBack}
                           target="_blank"
                           rel="noopener noreferrer"
+                          whileHover={{
+                            y: -2,
+                          }}
+                          whileTap={{
+                            scale: 0.97,
+                          }}
                         >
                           GitHub - Backend
-                        </a>
+                        </motion.a>
                       )}
 
                       {project.demo && (
-                        <a
+                        <motion.a
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
+                          whileHover={{
+                            y: -3,
+                            scale: 1.02,
+                          }}
+                          whileTap={{
+                            scale: 0.97,
+                          }}
                         >
                           Ver projeto →
-                        </a>
+                        </motion.a>
                       )}
                     </div>
                   </div>
-                </article>
+                </motion.article>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

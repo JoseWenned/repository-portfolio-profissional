@@ -6,6 +6,7 @@
 .container {
   width: 100%;
   max-width: var(--container-width);
+
   margin: 0 auto;
   padding: var(--section-padding) var(--spacing-lg);
 }
@@ -47,6 +48,12 @@
 
   font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
+
+  transition: color var(--transition-fast);
+}
+
+.description p:hover {
+  color: var(--color-text-primary);
 }
 
 @media (max-width: 768px) {
