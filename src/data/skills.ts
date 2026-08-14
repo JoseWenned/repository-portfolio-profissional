@@ -54,8 +54,8 @@ export const skills: Skill[] = [
   {
     category: "Testes",
     technologies: [
-      "Spring Boot Test",
-      "Jest",
+      "JUnit",
+      "Mockito",
       "Vitest",
       "React Testing Library",
       "Cypress",
@@ -66,9 +66,9 @@ export const skills: Skill[] = [
     technologies: [
       "Git",
       "GitHub",
+      "GitHub Actions",
       "Maven",
       "Docker",
-      "Docker Compose",
       "Swagger",
     ],
   },

@@ -6,7 +6,6 @@
 .container {
   width: 100%;
   max-width: var(--container-width);
-
   margin: 0 auto;
   padding: var(--section-padding) var(--spacing-lg);
 }
@@ -51,6 +50,10 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: var(--section-padding) var(--spacing-md);
+  }
+
   .title {
     font-size: var(--font-size-2xl);
   }
