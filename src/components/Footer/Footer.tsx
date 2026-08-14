@@ -9,10 +9,6 @@ export default function Footer() {
         <p>
           © {currentYear} José Wenned. Todos os direitos reservados.
         </p>
-
-        <p>
-          Desenvolvido com Next.js, React, TypeScript e CSS.
-        </p>
       </div>
     </footer>
   );

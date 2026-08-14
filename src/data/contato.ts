@@ -6,6 +6,6 @@ export interface Contato {
 
 export const contato: Contato = {
   email: "wennedchaves1997@gmail.com",
-  github: "https://github.com/seu-usuario",
-  linkedin: "https://www.linkedin.com/in/seu-perfil/",
+  github: "https://github.com/JoseWenned",
+  linkedin: "https://www.linkedin.com/in/jos%C3%A9-wenned/",
 };

@@ -1,13 +1,33 @@
+/* =========================================================
+   ESTRUTURA PRINCIPAL
+   ========================================================= */
+
 .hero {
+  position: relative;
   min-height: calc(100vh - 4.5rem);
 
   display: flex;
   align-items: center;
 
-  background-color: var(--color-background);
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 80% 45%,
+      rgb(37 99 235 / 0.08),
+      transparent 30%
+    ),
+    var(--color-background);
 }
 
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
 .container {
+  position: relative;
+  z-index: 2;
+
   width: 100%;
   max-width: var(--container-width);
 
@@ -15,9 +35,24 @@
   padding: var(--section-padding) var(--spacing-lg);
 }
 
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
 .content {
-  max-width: 800px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  align-items: center;
+  gap: var(--spacing-4xl);
 }
+
+.textContent {
+  max-width: 720px;
+}
+
+/* =========================================================
+   TIPOGRAFIA
+   ========================================================= */
 
 .greeting {
   margin-bottom: var(--spacing-sm);
@@ -26,6 +61,7 @@
 
   font-size: var(--font-size-lg);
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .title {
@@ -33,10 +69,25 @@
 
   color: var(--color-text-primary);
 
-  font-size: var(--font-size-5xl);
-  font-weight: 700;
-  line-height: var(--line-height-tight);
-  letter-spacing: -0.04em;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.title span {
+  display: block;
+
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    #60a5fa
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
 }
 
 .subtitle {
@@ -59,6 +110,10 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* =========================================================
+   AÇÕES
+   ========================================================= */
+
 .actions {
   display: flex;
   align-items: center;
@@ -71,7 +126,7 @@
   align-items: center;
   justify-content: center;
 
-  min-height: 2.75rem;
+  min-height: 3rem;
   padding: 0 var(--spacing-lg);
 
   border-radius: var(--radius-md);
@@ -80,29 +135,267 @@
   font-weight: 600;
 
   transition:
+    transform var(--transition-fast),
     background-color var(--transition-fast),
     color var(--transition-fast),
-    border-color var(--transition-fast);
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .primaryAction {
   color: var(--color-primary-contrast);
   background-color: var(--color-primary);
+
+  box-shadow: var(--shadow-sm);
 }
 
 .primaryAction:hover {
   background-color: var(--color-primary-hover);
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-md);
 }
 
 .secondaryAction {
   color: var(--color-text-primary);
+
   background-color: transparent;
+
   border: var(--border-width) solid var(--color-border);
 }
 
 .secondaryAction:hover {
   color: var(--color-primary);
+
   border-color: var(--color-primary);
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   ELEMENTO VISUAL / MOLDURA
+   ========================================================= */
+
+.visual {
+  position: relative;
+
+  width: min(100%, 360px);
+  aspect-ratio: 3 / 4;
+
+  margin-left: auto;
+}
+
+.visualFrame {
+  position: absolute;
+  inset: 2rem;
+
+  padding: 0.75rem;
+
+  border: 1px solid rgb(37 99 235 / 0.25);
+  border-radius: var(--radius-xl);
+
+  transform: rotate(4deg);
+
+  box-shadow:
+    var(--shadow-lg),
+    0 0 60px rgb(37 99 235 / 0.08);
+}
+
+.visualFrame::before {
+  content: "";
+
+  position: absolute;
+  inset: -1rem;
+
+  border: 1px solid rgb(37 99 235 / 0.12);
+  border-radius: var(--radius-xl);
+
+  animation: frameRotate 12s linear infinite;
+}
+
+.visualContent {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--color-surface);
+
+  overflow: hidden;
+}
+
+.visualInitials {
+  color: var(--color-primary);
+
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.profileImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================================================
+   ELEMENTOS DECORATIVOS
+   ========================================================= */
+
+.decorativeCircle {
+  position: absolute;
+
+  top: 8%;
+  right: 5%;
+
+  width: 3rem;
+  height: 3rem;
+
+  border: 1px solid var(--color-primary);
+
+  border-radius: 50%;
+
+  opacity: 0.5;
+
+  animation: float 5s ease-in-out infinite;
+}
+
+.decorativeSquare {
+  position: absolute;
+
+  bottom: 8%;
+  left: 3%;
+
+  width: 1.25rem;
+  height: 1.25rem;
+
+  border: 1px solid var(--color-primary);
+
+  transform: rotate(45deg);
+
+  opacity: 0.5;
+
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+.decorativeDiamond {
+  position: absolute;
+
+  top: 50%;
+  right: -2%;
+
+  color: var(--color-primary);
+
+  font-size: 2rem;
+
+  animation: float 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   BACKGROUND TÉCNICO
+   ========================================================= */
+
+.backgroundDecoration {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.35;
+
+  background-image:
+    linear-gradient(
+      rgb(15 23 42 / 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgb(15 23 42 / 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 30%,
+    black 70%,
+    transparent
+  );
+}
+
+.glow {
+  position: absolute;
+
+  top: 20%;
+  right: 15%;
+
+  width: 20rem;
+  height: 20rem;
+
+  border-radius: 50%;
+
+  background: rgb(37 99 235 / 0.08);
+
+  filter: blur(80px);
+}
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes frameRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3xl);
+  }
+
+  .textContent {
+    max-width: 100%;
+  }
+
+  .visual {
+    width: min(100%, 320px);
+
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: clamp(3rem, 14vw, 4.5rem);
+  }
 }
 
 @media (max-width: 768px) {
@@ -110,8 +403,9 @@
     min-height: auto;
   }
 
-  .title {
-    font-size: var(--font-size-4xl);
+  .container {
+    padding-top: var(--spacing-3xl);
+    padding-bottom: var(--spacing-3xl);
   }
 
   .subtitle {
@@ -125,6 +419,33 @@
   .actions {
     flex-direction: column;
     align-items: stretch;
-    max-width: 300px;
+
+    max-width: 320px;
+  }
+
+  .visual {
+    width: min(100%, 280px);
+  }
+
+  .visualInitials {
+    font-size: 4rem;
+  }
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .visualFrame::before,
+  .decorativeCircle,
+  .decorativeSquare,
+  .decorativeDiamond {
+    animation: none;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    transition: none;
   }
 }
