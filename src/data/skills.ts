@@ -70,6 +70,8 @@ export const skills: Skill[] = [
       "Maven",
       "Docker",
       "Swagger",
+      "vercel",
+      "LLMS"
     ],
   },
   {
