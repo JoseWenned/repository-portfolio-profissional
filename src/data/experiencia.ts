@@ -8,17 +8,21 @@ export interface Experiencia {
 
 export const experiencias: Experiencia[] = [
   {
-    empresa: "Kipolpas",
-    cargo: "Desenvolvedor de software",
-    periodo: "Março 2026 · Projeto concluído",
+    empresa: "JWC Distribuição & Logística",
+    cargo: "Fundador e Desenvolvedor de Software",
+    periodo: "2026 · Em andamento",
     descricao:
-      "Desenvolvimento de um sistema web voltado para apoiar processos relacionados à operação da empresa, aplicando conhecimentos de desenvolvimento backend e frontend.",
+      "Criação e desenvolvimento da JWC Distribuição & Logística, conciliando a construção do negócio com o desenvolvimento de sua plataforma tecnológica e presença digital.",
     atividades: [
-      "Desenvolvimento de funcionalidades utilizando Java e Spring Boot.",
-      "Criação e integração de APIs REST.",
-      "Desenvolvimento de interfaces utilizando React.",
-      "Integração com banco de dados PostgreSQL.",
+      "Desenvolvimento da plataforma web corporativa utilizando React, TypeScript e Vite.",
+      "Desenvolvimento de interfaces responsivas e componentizadas.",
+      "Implementação de navegação utilizando React Router e estilização com SCSS.",
+      "Desenvolvimento de testes unitários com Vitest e React Testing Library.",
+      "Implementação de testes end-to-end (E2E) utilizando Playwright.",
+      "Desenvolvimento e integração de API para formulário de contato e envio de e-mails.",
       "Utilização de Git e GitHub para versionamento e organização do projeto.",
+      "Desenvolvimento de documentação técnica e organização da arquitetura da aplicação.",
+      "Publicação e manutenção da aplicação em ambiente de produção.",
     ],
   },
 
@@ -39,6 +43,21 @@ export const experiencias: Experiencia[] = [
       "Versionamento com Git/GitHub;",
       "Deploy e publicação em produção;",
       "Utilização de LLMs como ferramenta de apoio à análise, desenvolvimento, debugging e refinamento da aplicação."
+    ],
+  },
+  
+  {
+    empresa: "Kipolpas",
+    cargo: "Desenvolvedor de software",
+    periodo: "Março 2026 · Projeto concluído",
+    descricao:
+      "Desenvolvimento de um sistema web voltado para apoiar processos relacionados à operação da empresa, aplicando conhecimentos de desenvolvimento backend e frontend.",
+    atividades: [
+      "Desenvolvimento de funcionalidades utilizando Java e Spring Boot.",
+      "Criação e integração de APIs REST.",
+      "Desenvolvimento de interfaces utilizando React.",
+      "Integração com banco de dados PostgreSQL.",
+      "Utilização de Git e GitHub para versionamento e organização do projeto.",
     ],
   },
 ];
